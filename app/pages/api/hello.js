@@ -2,7 +2,7 @@
 
 var nodemailer = require("nodemailer");
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   var transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
@@ -21,7 +21,7 @@ export default function handler(req, res) {
     text: JSON.stringify(req.body),
   };
 
-  transporter.sendMail(mailOptions, function (error, info) {
+  await transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
     } else {
