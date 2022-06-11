@@ -21,12 +21,13 @@ export default async function handler(req, res) {
     text: JSON.stringify(req.body),
   };
 
-  await transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Email was sent successfully: " + info.response);
-    }
-  });
-  res.status(200).json(req.body);
+  await transporter
+    .sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email was sent successfully: " + info.response);
+      }
+    })
+    .then((e) => res.status(200).json(req.body));
 }
